@@ -18,7 +18,14 @@ jobs:
         with:
           java-version: 11
           distribution: 'adopt'
-#      - name: Install Chromedriver
-#        uses: browser-actions/setup-chrome@v1
       - name: Run Tests
         run: mvn clean verify
+      - name: Publish Serenity Report
+        run: |
+          mkdir -p ${{ github.workspace }}/docs
+          cp -R target/site/serenity/* ${{ github.workspace }}/docs/
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages
+          folder: docs

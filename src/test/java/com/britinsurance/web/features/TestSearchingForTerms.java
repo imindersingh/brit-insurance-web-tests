@@ -22,7 +22,7 @@ class TestSearchingForTerms {
     @Test
     //@CsvSource("{IFRS 17,Interim results for the six months ended 30 June 2022-Gavin Wilkinson-John King}")
     //@CsvFileSource(resources = "/data/data.csv")
-    @DisplayName("Can search for terms")
+    @DisplayName("Test - Can search for terms")
     void testSearchForTerms_ReturnsCorrectResults() {
         iminder.attemptsTo(
                 NavigateTo.theHomePage(),

@@ -18,7 +18,7 @@ jobs:
         with:
           java-version: 11
           distribution: 'adopt'
-      - name: Install Chromedriver
-        uses: browser-actions/setup-chrome@v1
+#      - name: Install Chromedriver
+#        uses: browser-actions/setup-chrome@v1
       - name: Run Tests
         run: mvn clean verify

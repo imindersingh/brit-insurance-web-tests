@@ -20,16 +20,7 @@ jobs:
           distribution: 'adopt'
       - name: Run Tests
         run: mvn clean verify
-      - name: Compile SCSS
-        run: |
-          npm install --global sass
-          sass assets/css/style.scss assets/css/style.css
-      - name: Publish Serenity Report
-        run: |
-          mkdir -p ${{ github.workspace }}/docs
-          cp -R target/site/serenity/* ${{ github.workspace }}/docs/
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.1
+      - uses: actions/upload-artifact@v3
         with:
-          branch: gh-pages
-          folder: docs
+          name: serenity-report
+          path: target/site/serenity

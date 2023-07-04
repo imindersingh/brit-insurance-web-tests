@@ -1,0 +1,24 @@
+name: Run Brit Insurance Web Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11
+      - name: Install Chromedriver
+        uses: browser-actions/setup-chrome@v1
+        run: chrome --version
+      - name: Run Tests
+        run: mvn clean verify

@@ -79,7 +79,7 @@ There are some downsides to Serenity BDD too:
 2. The built-in reporting, although very rich in detail, can become very large.
 3. Requires maintenance. Constantly evolving framework, which sometimes can result in changes when upgrading versions.
 
-Overall, I decided to Serenity because of it's flexibility and ability to create tests relatively quickly.
+Overall, I decided to Serenity because of its flexibility and ability to create tests relatively quickly.
 
 ### Design
 
@@ -146,7 +146,9 @@ as an artifact:
 
 1. Click `serenity-report` and download the artifact
 2. Unzip the folder
-3. Open `index.html` in your browser
+3. Open `index.html` in your browser to view the report
+
+The report includes a breakdown of the steps and screenshots after each step showing the interactions.
 
 ## Enhancements
 

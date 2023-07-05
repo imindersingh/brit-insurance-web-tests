@@ -25,12 +25,12 @@ class TestSearchingForTerms {
   @ParameterizedTest
   @CsvFileSource(resources = "/data/search_results.csv", numLinesToSkip = 1)
   @DisplayName("Test - Can search for terms")
-  void testSearchForTerms_ReturnsCorrectResults(final String searchTerm, final String expectedResultsString, final int resultCount) {
+  void testSearchingForTerms_ReturnsCorrectResults(final String searchTerm, final String expectedResultsString, final int resultCount) {
     iminder.attemptsTo(
         NavigateTo.theHomePage(),
         Search.byTerm(searchTerm)
     );
-    final List<String> actualResults = SearchResults.returnedResultsLinkTexts().answeredBy(iminder);
+    final List<String> actualResults = SearchResults.linkTexts().answeredBy(iminder);
     final List<String> expectedResults = List.of(expectedResultsString.split(",\\s*"));
     iminder.attemptsTo(
         Ensure.that(actualResults.size()).isEqualTo(resultCount),

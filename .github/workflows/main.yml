@@ -21,8 +21,12 @@ jobs:
           distribution: 'adopt'
       - name: Build and Run Tests
         run: mvn clean verify
-    always:
-      - uses: actions/upload-artifact@v3
+  publish_reports:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish Reports
+        uses: actions/upload-artifact@v3
         with:
           name: serenity-report
           path: target/site/serenity

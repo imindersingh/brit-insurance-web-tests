@@ -21,8 +21,9 @@ public class Search {
   public static Performable byTerm(String keyword) {
     return Task.where("{0} searches for " + keyword + " in the top right search bar",
         Click.on(SEARCH_BUTTON).afterWaitingUntilEnabled(),
-        Wait.until(WebElementQuestion.the(SEARCH_INPUT), WebElementStateMatchers.isPresent())
+        Wait.until(WebElementQuestion.the(SEARCH_INPUT), WebElementStateMatchers.isClickable())
             .forNoMoreThan(Duration.ofSeconds(40)),
+        Click.on(SEARCH_INPUT),
         Enter.theValue(keyword).into(SEARCH_INPUT).thenHit(Keys.ENTER),
         Wait.until(WebElementQuestion.the(SearchResults.RESULTS_HEADER), WebElementStateMatchers.isPresent())
     );

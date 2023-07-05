@@ -2,6 +2,8 @@
 
 Web tests for Brit Insurance website: [https://www.britinsurance.com](https://www.britinsurance.com/)
 
+[![Build](https://github.com/imindersingh/brit-insurance-web-tests/actions/workflows/main.yml/badge.svg)](https://github.com/imindersingh/brit-insurance-web-tests/actions/workflows/main.yml)
+
 ## Requirements
 
 - Java 11

@@ -1,4 +1,4 @@
-name: Run Brit Insurance Web Tests
+name: Build
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
         with:
           java-version: 11
           distribution: 'adopt'
-      - name: Run Tests
+      - name: Build and Run Tests
         run: mvn clean verify
       - uses: actions/upload-artifact@v3
         with:

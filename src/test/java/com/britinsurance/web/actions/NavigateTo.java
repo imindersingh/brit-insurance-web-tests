@@ -13,19 +13,19 @@ import net.serenitybdd.screenplay.questions.WebElementQuestion;
 import net.serenitybdd.screenplay.waits.Wait;
 
 public class NavigateTo {
-    public static Performable theHomePage() {
-        return Task.where("{0} navigates to the Brit Insurance home page",
-                Open.browserOn()
-                        .the(HomePage.class));
-    }
+  public static Performable theHomePage() {
+    return Task.where("{0} navigates to the Brit Insurance home page",
+        Open.browserOn()
+            .the(HomePage.class));
+  }
 
-    public static Performable contactPageFromTheMenu() {
-        return Task.where("{0} navigates to the Contact page from the menu",
-                Wait.until(WebElementQuestion.the(Menu.MENU_BUTTON), WebElementStateMatchers.isClickable()),
-                Click.on(Menu.MENU_BUTTON)
-                        .afterWaitingUntilEnabled(),
-                Scroll.to(Menu.CONTACT_LINK)
-                        .then(Click.on(Menu.CONTACT_LINK))
-        );
-    }
+  public static Performable contactPageFromTheMenu() {
+    return Task.where("{0} navigates to the Contact page from the menu",
+        Wait.until(WebElementQuestion.the(Menu.MENU_BUTTON), WebElementStateMatchers.isClickable()),
+        Click.on(Menu.MENU_BUTTON)
+             .afterWaitingUntilEnabled(),
+        Scroll.to(Menu.CONTACT_LINK)
+              .then(Click.on(Menu.CONTACT_LINK))
+    );
+  }
 }

@@ -22,7 +22,7 @@ public class Search {
     return Task.where("{0} searches for " + keyword + " in the top right search bar",
         Click.on(SEARCH_BUTTON).afterWaitingUntilEnabled(),
         Wait.until(WebElementQuestion.the(SEARCH_INPUT), WebElementStateMatchers.isPresent())
-            .forNoMoreThan(Duration.ofSeconds(120)),
+            .forNoMoreThan(Duration.ofSeconds(60)),
         Click.on(SEARCH_INPUT),
         Enter.theValue(keyword).into(SEARCH_INPUT).thenHit(Keys.ENTER),
         Wait.until(WebElementQuestion.the(SearchResults.RESULTS_HEADER), WebElementStateMatchers.isPresent())

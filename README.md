@@ -157,7 +157,7 @@ The report includes a breakdown of the steps and screenshots after each step sho
 2. I've added CI through GitHub actions to build and run the tests.
    See [main](https://github.com/imindersingh/brit-insurance-web-tests/actions/workflows/main.yml) workflow.
     1. The build can be manually triggered from `Run workflow`:
-    
+
        ![run_workflow.png](.images/run_workflow.png)
 
 ## Improvements
@@ -170,3 +170,6 @@ The report includes a breakdown of the steps and screenshots after each step sho
   or if the application uses dynamic IDs.
 - Given this is a tech test, changes have been going into a single branch. The main branch should be protected and changes should be added through the
   adopted branching strategy.
+- With the tests parameterized, the second iteration of `testSearchingForTerms_ReturnsCorrectResults` fails on the odd occasion on the GitHub runner,
+  however consistently passes locally. So there is some difference in the environment and setup. It could be a concurrency issue or ChromeDriver
+  related. Given the time I would investigate this issue to stablise the tests running on GitHub runners.

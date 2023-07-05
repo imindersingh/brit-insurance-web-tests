@@ -1,7 +1,7 @@
 package com.britinsurance.web.features;
 
 import com.britinsurance.web.actions.NavigateTo;
-import com.britinsurance.web.components.ContactPage;
+import com.britinsurance.web.components.ContactDetails;
 
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.serenitybdd.screenplay.Actor;
@@ -25,7 +25,7 @@ class TestContactDetails {
         NavigateTo.theHomePage(),
         NavigateTo.contactPageFromTheMenu()
     );
-    final String actualAddress = ContactPage.officeAddress(ContactPage.BERMUDA_ADDRESS).answeredBy(iminder);
+    final String actualAddress = ContactDetails.officeAddress(ContactDetails.BERMUDA_ADDRESS).answeredBy(iminder);
     final String expectedAddress =
         "Ground Floor, Chesney House\n"
             + "The Waterfront, 96 Pitts Bay Road,\n"

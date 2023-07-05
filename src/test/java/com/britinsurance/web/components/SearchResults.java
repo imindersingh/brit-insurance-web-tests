@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 import java.time.Duration;
 import java.util.List;
 
-public class ResultsPage {
+public class SearchResults {
   public static final Target RESULTS_HEADER = Target.the("Results header").located(By.xpath("//h2['results'=text()]"));
   public static final Target RESULT_LINK = Target.the("Result link").located(By.xpath("//a[@class='s-results__tag']"));
 

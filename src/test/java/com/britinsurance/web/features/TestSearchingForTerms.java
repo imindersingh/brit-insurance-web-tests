@@ -2,7 +2,7 @@ package com.britinsurance.web.features;
 
 import com.britinsurance.web.actions.NavigateTo;
 import com.britinsurance.web.actions.Search;
-import com.britinsurance.web.components.ResultsPage;
+import com.britinsurance.web.components.SearchResults;
 
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.serenitybdd.screenplay.Actor;
@@ -10,8 +10,9 @@ import net.serenitybdd.screenplay.annotations.CastMember;
 import net.serenitybdd.screenplay.ensure.Ensure;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import java.util.List;
 
@@ -21,19 +22,18 @@ class TestSearchingForTerms {
   @CastMember(name = "Iminder")
   Actor iminder;
 
-  @Test
-  //@CsvSource("{IFRS 17,Interim results for the six months ended 30 June 2022-Gavin Wilkinson-John King}")
-  //@CsvFileSource(resources = "/data/data.csv")
+  @ParameterizedTest
+  @CsvFileSource(resources = "/data/search_results.csv", numLinesToSkip = 1)
   @DisplayName("Test - Can search for terms")
-  void testSearchForTerms_ReturnsCorrectResults() {
+  void testSearchForTerms_ReturnsCorrectResults(final String searchTerm, final String expectedResultsString, final int resultCount) {
     iminder.attemptsTo(
         NavigateTo.theHomePage(),
-        Search.byTerm("IFRS 17")
+        Search.byTerm(searchTerm)
     );
-    final List<String> actualResults = ResultsPage.returnedResultsLinkTexts().answeredBy(iminder);
-    final List<String> expectedResults = List.of("Interim results for the six months ended 30 June 2022", "Gavin Wilkinson", "John King");
+    final List<String> actualResults = SearchResults.returnedResultsLinkTexts().answeredBy(iminder);
+    final List<String> expectedResults = List.of(expectedResultsString.split(",\\s*"));
     iminder.attemptsTo(
-        Ensure.that(actualResults.size()).isEqualTo(3),
+        Ensure.that(actualResults.size()).isEqualTo(resultCount),
         Ensure.that(actualResults).containsExactlyElementsFrom(expectedResults)
     );
   }

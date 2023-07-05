@@ -1,6 +1,6 @@
 package com.britinsurance.web.actions;
 
-import com.britinsurance.web.components.ResultsPage;
+import com.britinsurance.web.components.SearchResults;
 
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
@@ -24,7 +24,7 @@ public class Search {
         Wait.until(WebElementQuestion.the(SEARCH_INPUT), WebElementStateMatchers.isPresent())
             .forNoMoreThan(Duration.ofSeconds(40)),
         Enter.theValue(keyword).into(SEARCH_INPUT).thenHit(Keys.ENTER),
-        Wait.until(WebElementQuestion.the(ResultsPage.RESULTS_HEADER), WebElementStateMatchers.isPresent())
+        Wait.until(WebElementQuestion.the(SearchResults.RESULTS_HEADER), WebElementStateMatchers.isPresent())
     );
   }
 }

@@ -9,7 +9,7 @@ import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 
 @DefaultUrl("https://www.britinsurance.com/contact")
-public class ContactPage extends PageObject {
+public class ContactDetails extends PageObject {
   public static final Target BERMUDA_ADDRESS = Target.the("Bermuda office address")
                                                      .located(By.xpath("//div[@id='bermudaoffice']//address"));
 

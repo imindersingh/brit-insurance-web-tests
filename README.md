@@ -13,18 +13,32 @@ Web tests for Brit Insurance website: [https://www.britinsurance.com](https://ww
 ### The project directory structure
 
 ```
-src
+├── README.md
+├── pom.xml
 └── src
-└── test
-├── java
-│   └── com
-│       └── britinsurance
-│           └── web
-│               ├── actions                
-│               ├── components 
-│               └── features
-└── resources
-└── data
+    └── test
+        ├── java
+        │   └── com
+        │       └── britinsurance
+        │           └── web
+        │               ├── actions
+        │               │   ├── NavigateTo.java
+        │               │   └── Search.java
+        │               ├── components
+        │               │   ├── ContactDetails.java
+        │               │   ├── HomePage.java
+        │               │   ├── Menu.java
+        │               │   ├── SearchBar.java
+        │               │   └── SearchResults.java
+        │               └── features
+        │                   ├── TestContactDetails.java
+        │                   └── TestSearchingForTerms.java
+        └── resources
+            ├── data
+            │   └── search_results.csv
+            ├── logback-test.xml
+            └── serenity.conf
+
 ```
 
 `actions` - contain classes of modular/reusable actions that can be performed on the site
@@ -78,7 +92,7 @@ For the design, I decided:
    model.
 2. Along with this, the screenplay pattern has the concept of questions, which is a way to inspect the state and
    retrieve information required.
-3. The Screenplay pattern allows user-focused, end-to-end web tests to be written fluently.
+3. The Screenplay pattern allows user-focused, end-to-end web tests to be written fluently driven by the concept of actors.
 
 More information about the screenplay pattern can be
 found [here](https://serenity-bdd.github.io/docs/screenplay/screenplay_fundamentals).
@@ -113,7 +127,7 @@ in [Search.java](src/test/java/com/britinsurance/web/actions/Search.java).
 
 Terminal execution output:
 
-![terminal.png](.images/terminal.png)
+![terminal_results.png](.images/terminal_results.png)
 
 ### GitHub Report
 
@@ -129,14 +143,17 @@ as an artifact:
 2. Unzip the folder
 3. Open `index.html` in your browser
 
-## Improvements
+## Enhancements
 
+- I've added parametrization to `TestSearchingForTerms`, so the test is driven by data in `search_results.csv`
 - I've added CI through GitHub actions to build and run the tests.
   See [main](https://github.com/imindersingh/brit-insurance-web-tests/actions/workflows/main.yml) workflow.
-- Make tests data-driven by parameterizing from test data files
-- `serenity.conf` can be configured with multiple configurations for different environments and OS
+
+## Improvements
+
+- It takes a while for the report to be published on GitHub, so another option would be to upload a single page summary report available in Serenity.
+- `serenity.conf` can be configured with multiple configurations for different environments and OS for tests to be run across multiple browser/platforms.
 - I've tried to use `data-*` selectors where available. From an application perspective, to increase testability and
   stability, `data-*` attributes should be added. Other selectors such as CSS can change if there are development changes,
-  or if the application uses dynamic IDs
-- Given this is a tech test, changes have been going into a single branch. In reality, a branching strategy should be used and the main branch protected.
-- Add capability to run tests on multiple OS and environments
+  or if the application uses dynamic IDs.
+- Given this is a tech test, changes have been going into a single branch. The main branch should be protected and changes should be added through the adopted branching strategy.

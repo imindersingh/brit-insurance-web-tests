@@ -40,6 +40,7 @@ in [serenity.conf](src/test/resources/serenity.conf).
 See [main](https://github.com/imindersingh/brit-insurance-web-tests/actions/workflows/main.yml) workflow. 
 
 The build can be manually triggered from `Run workflow`:
+
 ![run_workflow.png](.images/run_workflow.png)
 
 ### 4. Viewing Report

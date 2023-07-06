@@ -25,7 +25,7 @@ In the terminal, run:
    cd brit-insurance-web-tests
 ````
 ```shell
-   mvn clean install
+   mvn clean -U
 ````
 ### 3. Executing Tests
 #### 3.1 Local
